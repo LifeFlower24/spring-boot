@@ -41,6 +41,11 @@ import org.springframework.stereotype.Indexed;
  * @author Andy Wilkinson
  * @since 1.4.0
  */
+// @SpringBootConfiguration
+//
+// Spring Boot的配置类 ,标注在某个类上,表示这是一个Spring Boot的配置类
+// 其实就是一个 Configuration 配置类,意思是 XXXMainApplication 最终会被注册到 Spring 容器中
+
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented

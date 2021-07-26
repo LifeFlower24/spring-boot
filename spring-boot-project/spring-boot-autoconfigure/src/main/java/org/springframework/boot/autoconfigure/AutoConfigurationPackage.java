@@ -34,6 +34,15 @@ import org.springframework.context.annotation.Import;
  * @since 1.3.0
  * @see AutoConfigurationPackages
  */
+
+// @AutoConfigurationPackage
+//
+// 自动配置包注解
+
+// @Import(AutoConfigurationPackages.Registrar.class):
+// 默认将主配置类(@SpringBootApplication)所在的包及其子包里面的所有组件扫描到Spring容器中
+
+
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented

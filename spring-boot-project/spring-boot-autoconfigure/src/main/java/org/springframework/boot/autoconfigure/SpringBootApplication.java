@@ -48,6 +48,9 @@ import org.springframework.data.repository.Repository;
  * @author Andy Wilkinson
  * @since 1.2.0
  */
+// Spring Boot 应用标注在某个类上,说明这个类是 SpringBoot 的主配置类,
+// SpringBoot 就应该运行这个类的 main 方法来启动 SpringBoot 应用.
+
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented

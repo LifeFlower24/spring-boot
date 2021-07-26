@@ -1,0 +1,62 @@
+Spring Boot 概述
+    Build Anything with Spring Boot:Spring Boot is the starting point for building all Spring-based applications.
+    Spring Boot is designed to get you up and running as quickly as possible, with minimal upfront configuration of Spring.
+
+    上面是引自官网的一段话,大概是说:Spring Boot 是所有基于 Spring 开发的项目的起点.Spring Boot 的设计是为了让你尽可能快的跑起来 Spring 应用程序并且尽可能减少你的配置文件.
+
+什么是 Spring Boot
+    1.它使用 "习惯优于配置" (项目中存在大量的配置,此外还内置一个习惯性的配置,让你无须手动配置)的理念让你的项目快速运行起来.
+    2.它并不是什么新的框架,而是默认配置了很多框架的使用方式,就像 Maven 整合了所有的 jar 包一样,Spring Boot 整合了所有框架.
+
+
+使用 Spring Boot 有什么好处
+    回顾我们之前的 SSM 项目,搭建过程还是比较繁琐的,需要:
+    
+    1) 配置 web.xml,加载 spring 和 spring mvc
+    2) 配置数据库连接、配置日志文件
+    3) 配置 jar 在配置文件的读取,开启注解
+    4) 配置 mapper 文件
+    .....
+    而使用 Spring Boot 来开发项目则只需要非常少的几个配置就可以搭建起来一个 Web 项目,并且利用 IDEA 可以自动生成生成
+    
+    划重点:简单、快速、方便地搭建项目；对主流开发框架的无配置集成;极大提高了开发、部署效率.
+    
+    
+启动器
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        ​ spring-boot-starter:spring boot场景启动器;帮助导入 web 模块正常运行所依赖的组件;
+
+        ​Spring Boot将所有的功能场景抽取出来,做成一个个的 starter (启动器),只需要在项目中引入这些 starter,那么相关的场景的所有依赖都会导入进项目中.
+        要用什么功能就导入什么场景的启动器.
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+        </dependency>
+        
+        添加了 spring-boot-starter-web 依赖,会自动添加 Tomcat 和 Spring MVC 的依赖
+        
+        spring-boot-starter-web中又引入了spring-boot-starter-tomcat
+        
+
+@SpringBootApplication
+
+        Spring Boot应用标注在某个类上,说明这个类是 SpringBoot 的主配置类,SpringBoot 就应该运行这个类的 main 方法来启动 SpringBoot 应用.
+        注解定义如下:
+
+        @SpringBootConfiguration
+        @EnableAutoConfiguration
+        @ComponentScan(excludeFilters = {
+                @Filter(type = FilterType.CUSTOM, classes = TypeExcludeFilter.class),
+                @Filter(type = FilterType.CUSTOM, classes = AutoConfigurationExcludeFilter.class) })
+        public @interface SpringBootApplication {}

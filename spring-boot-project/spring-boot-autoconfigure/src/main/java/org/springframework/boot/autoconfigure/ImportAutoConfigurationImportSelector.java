@@ -45,6 +45,8 @@ import org.springframework.util.ObjectUtils;
  * @author Phillip Webb
  * @author Andy Wilkinson
  */
+ // ImportAutoConfigurationImportSelector 的父类:AutoConfigurationImportSelector
+
 class ImportAutoConfigurationImportSelector extends AutoConfigurationImportSelector implements DeterminableImports {
 
 	private static final Set<String> ANNOTATION_NAMES;

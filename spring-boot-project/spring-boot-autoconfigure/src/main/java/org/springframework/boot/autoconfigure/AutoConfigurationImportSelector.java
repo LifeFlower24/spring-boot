@@ -70,6 +70,8 @@ import org.springframework.util.StringUtils;
  * @since 1.3.0
  * @see EnableAutoConfiguration
  */
+// AutoConfigurationImportSelector:导入哪些组件的选择器,将所有需要导入的组件以全类名的方式返回,这些组件就会被添加到容器中.
+
 public class AutoConfigurationImportSelector implements DeferredImportSelector, BeanClassLoaderAware,
 		ResourceLoaderAware, BeanFactoryAware, EnvironmentAware, Ordered {
 
@@ -96,6 +98,8 @@ public class AutoConfigurationImportSelector implements DeferredImportSelector, 
 		if (!isEnabled(annotationMetadata)) {
 			return NO_IMPORTS;
 		}
+		// 我们主要看 List<String> configurations = getCandidateConfigurations(annotationMetadata, attributes);
+		// 会给容器中注入众多的自动配置类(xxxAutoConfiguration),就是给容器中导入这个场景需要的所有组件,并配置好这些组件.我们跟进去看看
 		AutoConfigurationEntry autoConfigurationEntry = getAutoConfigurationEntry(annotationMetadata);
 		return StringUtils.toStringArray(autoConfigurationEntry.getConfigurations());
 	}
@@ -181,7 +185,6 @@ public class AutoConfigurationImportSelector implements DeferredImportSelector, 
 				+ "are using a custom packaging, make sure that file is correct.");
 		return configurations;
 	}
-
 	/**
 	 * Return the class used by {@link SpringFactoriesLoader} to load configuration
 	 * candidates.
